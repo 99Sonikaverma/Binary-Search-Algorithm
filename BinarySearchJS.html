@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Binary Search Algorithm Using JavaScript</title>
+</head>
+<body>
+<script>
+let recurseFunc = function (array, b, first, last) {
+	
+	// Base Condition
+	if (first > last) return false;
+
+	// Find the middle index
+	let middle=Math.floor((first + last)/2);
+
+	// Compare middle with given key b
+	if (array[middle]===b) return true;
+		
+	// If element at middle is greater than b,
+	// search in the left half of middle
+	if(array[middle] > b)
+		return recurseFunc(array, b, first, middle-1);
+	else
+
+		// If element at middle element is smaller than b,
+		// search in the right half of middle
+		return recurseFunc(array, b, middle+1, last);
+}
+
+// Driver code
+let array = [1, 3, 5, 7, 8, 9];
+let b = 5;
+
+if (recurseFunc(array, b, 0, array.length-1))
+	document.write("Element found!<br>");
+else document.write("Element not found!<br>");
+
+b = 6;
+
+if (recurseFunc(array, b, 0, array.length-1))
+	document.write("Element found!<br>");
+else document.write("Element not found!<br>");
+</script>									
